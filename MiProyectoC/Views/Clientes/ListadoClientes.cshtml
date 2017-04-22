@@ -1,0 +1,36 @@
+﻿@model List<MiProyectoC.Models.Cliente>
+
+@{
+    ViewBag.Title = "ListadoClientes";
+}
+
+<h2>ListaClientes</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Acciones</th>
+    </tr>
+
+    @foreach (var cli in Model)
+    {
+        <tr>
+            <td>@cli.Id</td>
+            <td>@cli.Nombre</td>
+            <td>@cli.Apellido</td>
+            <td>
+                @Html.ActionLink("Delete", "BorraCliente", new { cli.Id }) |
+                @Html.ActionLink("Editar", "EditarCliente", new { cli.Id }) |
+                @Html.ActionLink("Detalle", "DetalleCliente", new { cli.Id }) |
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<div>
+    <a href="NuevoCliente">+ Crear Nuevo Cliente</a>
+</div>
